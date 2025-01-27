@@ -1,16 +1,19 @@
 <div class="character-selection-container">
-  <h1 class="text-xl font-bold mb-4">Seleziona 2 Personaggi</h1>
-  <div class="grid grid-cols-2 gap-4">
+  <h1 class="text-xl font-bold mb-4">SELEZIONA DUE PERSONAGGI DA FAR COMBATTERE</h1>
+
+  <!-- Riga unica con colonne per i personaggi -->
+  <div class="character-row">
     <div *ngFor="let character of characters"
-         class="character-card border rounded-lg shadow-lg relative"
+         class="character-card border rounded-lg shadow-lg p-4 text-center"
          (click)="selectCharacter(character)"
          [class.selected]="isSelected(character)"
          [class.disabled]="!isSelected(character) && selectedCharacters.length >= 2">
+      <!-- Immagine --><h2 class="text-lg font-semibold">{{ character.nome }}</h2>
       <img [src]="character.immagine" [alt]="character.nome" class="character-image rounded-lg">
-      <h2 class="text-lg font-semibold text-center mt-2">{{ character.nome }}</h2>
-      <div class="stats-overlay" *ngIf="hoveredCharacter === character"
-           (mouseenter)="hoveredCharacter = character"
-           (mouseleave)="hoveredCharacter = null">
+
+      <!-- Statistiche che appaiono al passaggio del mouse -->
+      <div class="stats-overlay">
+
         <p>Attacco: {{ character.attacco }}</p>
         <p>Difesa: {{ character.difesa }}</p>
         <p>Evasione: {{ character.evasione }}</p>
@@ -20,7 +23,10 @@
       </div>
     </div>
   </div>
-  <button class="mt-4 btn-primary" [disabled]="selectedCharacters.length < 2" (click)="confirmSelection()">
+
+  <button class="mt-4 btn-primary"
+          [disabled]="selectedCharacters.length < 2"
+          (click)="confirmSelection()">
     Conferma Selezione
   </button>
 </div>

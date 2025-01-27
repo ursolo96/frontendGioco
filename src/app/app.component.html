@@ -1,35 +1,39 @@
 <!-- src/app/app.component.html -->
-<div class="battle-arena">
-  <div class="column character" id="left-column">
-    <app-personaggio
-      [data]="gameState.personaggio1"
-      [maxVita]="p1MaxVita"
-      [mosse]="mosse"
-      [mossaSelezionata]="mossaP1"
-      (moveSelected)="onMoveSelected($event, 'personaggio1')">
-    </app-personaggio>
-  </div>
-  <div class="column log" id="center-column">
-    <app-battle-log [logs]="battleLogs" [isGameOver]="finito" [winnerName]="vincitore"></app-battle-log>
-  </div>
-  <div class="column character" id="right-column">
-    <app-personaggio
-      [data]="gameState.personaggio2"
-      [maxVita]="p2MaxVita"
-      [mosse]="mosse"
-      [mossaSelezionata]="mossaP2"
-      (moveSelected)="onMoveSelected($event, 'personaggio2')">
-    </app-personaggio>
-  </div>
+<app-character-selection *ngIf="showSelezione" (personaggiSelezionati)="inizia($event)"></app-character-selection>
 
-</div>
-<div class="battle-controls">
-  <img
-    src="/img_1.png"
-    *ngIf="!finito"
-    alt="Esegui Mosse"
-    class="battle-button"
-    (click)="inviaMovimenti()"
-    style="cursor: pointer; width: 80px; height: auto;position:relative;bottom: 150px">
+<div *ngIf="!showSelezione">
+  <div class="battle-arena">
+    <div class="column character" id="left-column">
+      <app-personaggio
+        [data]="gameState.personaggio1"
+        [maxVita]="p1MaxVita"
+        [mosse]="mosse"
+        [mossaSelezionata]="mossaP1"
+        (moveSelected)="onMoveSelected($event, 'personaggio1')">
+      </app-personaggio>
+    </div>
+    <div class="column log" id="center-column">
+      <app-battle-log (ricomincia)="ricomincia()" [logs]="battleLogs" [isGameOver]="finito" [winnerName]="vincitore"></app-battle-log>
+    </div>
+    <div class="column character" id="right-column">
+      <app-personaggio
+        [data]="gameState.personaggio2"
+        [maxVita]="p2MaxVita"
+        [mosse]="mosse"
+        [mossaSelezionata]="mossaP2"
+        (moveSelected)="onMoveSelected($event, 'personaggio2')">
+      </app-personaggio>
+    </div>
 
+  </div>
+  <div class="battle-controls">
+    <img
+      src="/img_1.png"
+      *ngIf="!finito"
+      alt="Esegui Mosse"
+      class="battle-button"
+      (click)="inviaMovimenti()"
+      style="cursor: pointer; width: 80px; height: auto;position:relative;bottom: 150px">
+
+  </div>
 </div>

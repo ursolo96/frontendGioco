@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router} from '@angular/router';
 
@@ -14,13 +14,14 @@ export class BattleLogComponent {
   @Input() isGameOver: boolean = false;
   @Input() winnerName: string = '';
   @Input() otherPlayerName: string = ''; // Aggiunto per evitare errore di compilazione
-
+  @Output() ricomincia: EventEmitter<any>= new EventEmitter();
 
   constructor(private router: Router) {
   }
 
 
   goToCharacterSelection() {
-    this.router.navigate(['/seleziona-personaggi']); // Assicurati di avere configurato il router
+
+    this.ricomincia.emit();
   }
 }

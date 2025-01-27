@@ -4,6 +4,7 @@ import {PersonaggioComponent} from './components/personaggio/personaggio.compone
 import {BattleLogComponent} from './components/battle-log/battle-log.component';
 import {BattleService} from './services/battle.service';
 import {HttpClient} from '@angular/common/http';
+import {CharacterSelectionComponent} from './components/CharacterSelectionComponent/CharacterSelectionComponent';
 
 interface GameState {
 
@@ -25,7 +26,7 @@ interface GameState {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, PersonaggioComponent, BattleLogComponent],
+  imports: [CommonModule, PersonaggioComponent, BattleLogComponent, CharacterSelectionComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -38,6 +39,9 @@ export class AppComponent implements OnInit {
   vincitore = ""
   p2MaxVita = 0;
   finito = false;
+  showSelezione=true;
+
+
 
 
   constructor(private http: HttpClient) {
@@ -54,19 +58,31 @@ export class AppComponent implements OnInit {
   battleLogs: string[] = [];
 
   ngOnInit() {
-    // I dati del tuo JSON
+
+  }
+
+  ricomincia()
+  {
+    this.showSelezione=true;
+    this.finito = false
+  }
+
+  inizia($event:any)
+  {
+    this.id1 = $event[0];
+    this.id2 = $event[1];
     this.http.get("/api/turni/" + this.id1 + "/" + this.id2).subscribe(
       result => {
         this.gameState = result as GameState;
         this.p1MaxVita = this.gameState.personaggio1.vita
         this.p2MaxVita = this.gameState.personaggio2.vita
+        this.showSelezione=false;
+        this.battleLogs = [];
         if (this.gameState.log) {
           this.battleLogs.push(this.gameState.log);
         }
       }
     )
-
-
   }
 
   // Metodo per gestire la selezione delle mosse
@@ -92,11 +108,11 @@ export class AppComponent implements OnInit {
           this.gameState = result as GameState;
           this.battleLogs.unshift(this.gameState.log);
           if (this.gameState.personaggio1.vita <= 0) {
-this.vincitore=this.gameState.personaggio2.nome;
+            this.vincitore = this.gameState.personaggio2.nome;
             this.finito = true;
           }
           if (this.gameState.personaggio2.vita <= 0) {
-            this.vincitore=this.gameState.personaggio1.nome;
+            this.vincitore = this.gameState.personaggio1.nome;
             this.finito = true;
           }
           this.mossaP1 = null;
