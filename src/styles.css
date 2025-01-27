@@ -1,1 +1,10 @@
+body {
+
+  background-image: url('/sfondogrosso.png') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  overflow-y:hidden;
+}
 /* You can add global styles to this file, and also import other style files */

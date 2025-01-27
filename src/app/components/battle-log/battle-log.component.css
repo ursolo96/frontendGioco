@@ -1,0 +1,64 @@
+.battle-log {
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  margin: 10px;
+  background-color: #f5f5f5;
+  height: 80vh; /* Altezza del log della battaglia */
+  overflow-y: auto;
+  background-image: url('/logbattaglia.png'); /* Sfondo del log della battaglia */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 63vw;
+}
+
+/* Nascondere la barra di scorrimento */
+.battle-log::-webkit-scrollbar {
+  display: none; /* Nasconde la scrollbar in Chrome, Safari e Edge */
+}
+
+.battle-log {
+  -ms-overflow-style: none; /* Nasconde la scrollbar in IE/Edge */
+  scrollbar-width: none; /* Nasconde la scrollbar in Firefox */
+}
+
+.log-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 40%; /* Larghezza delle scritte */
+  margin: 0 auto; /* Centra le scritte */
+}
+
+.log-entries p {
+  margin: 0;
+  padding: 24px; /* Spaziatura interna per abbassare le scritte */
+  background-color: transparent;
+  border-radius: 4px;
+  border-left: none; /* Rimuove la linea verde */
+  font-weight: bold;
+  font-size: 1.2em; /* Dimensione del font */
+}
+
+h2 {
+  text-align: center; /* Testo centrato */
+  text-transform: uppercase; /* Testo in maiuscolo */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center; /* Centra il pulsante orizzontalmente */
+  margin-top: 20px; /* Spaziatura sopra il pulsante */
+}
+
+.character-select-button {
+  cursor: pointer; /* Cambia il cursore quando si passa sopra l'immagine */
+  width: 150px; /* Dimensione personalizzabile del pulsante */
+  height: auto; /* Mantiene le proporzioni dell'immagine */
+  transition: transform 0.2s; /* Aggiunge un effetto al passaggio del mouse */
+}
+
+.character-select-button:hover {
+  transform: scale(1.1); /* Leggero ingrandimento al passaggio del mouse */
+}

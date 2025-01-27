@@ -1,0 +1,22 @@
+{
+  "personaggio1": {
+    "nome": "Guerriero",
+    "vita": 162,
+    "attacco": 10,
+    "difesa": 7,
+    "evasione": 15,
+    "velocita": 8,
+    "critico": 10,
+    "mosse": ["attacco normale", "attacco pesante", "attacco perforante", "difesa potenziata", "evasione potenziata", "cura"]
+  },
+  "personaggio2": {
+    "nome": "Assassino",
+    "vita": 192,
+    "attacco": 10,
+    "difesa": 2,
+    "evasione": 25,
+    "velocita": 12,
+    "critico": 20,
+    "mosse": ["attacco normale", "attacco pesante", "attacco perforante", "difesa potenziata", "evasione potenziata", "cura"]
+  }
+}

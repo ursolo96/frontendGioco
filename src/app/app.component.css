@@ -1,0 +1,30 @@
+
+.battle-arena {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px 20px 20px;
+  gap: 20px;
+}
+
+.column {
+  display: flex; /* Ripristina la visibilità dei div */
+  flex: 1;
+}
+
+.character {
+  max-width: 300px;
+}
+
+.log {
+  flex: 2;
+}
+
+.battle-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.battle-button {
+  /* Puoi aggiungere altre proprietà per stilizzare il pulsante */
+}

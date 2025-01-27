@@ -1,0 +1,30 @@
+<div class="personaggio">
+  <h2>{{ data.nome }}</h2>
+  <div class="immagine">
+    <img [src]="data.immagine" [alt]="data.nome">
+  </div>
+  <div
+    class="health-bar"
+
+    [style.background]="getHealthBarColor(data.vita, maxVita)">
+  </div>
+
+  <div class="stats">
+    <p><strong>Vita:</strong> <strong><span style="font-size: 1em;">{{ data.vita }}</span></strong></p>
+    <p><strong>Attacco:</strong> <strong><span style="font-size: 1em;">{{ data.attacco }}</span></strong></p>
+    <p><strong>Difesa:</strong> <strong><span style="font-size: 1em;">{{ data.difesa }}</span></strong></p>
+    <p><strong>Evasione:</strong> <strong><span style="font-size: 1em;">{{ data.evasione }}</span></strong></p>
+    <p><strong>Velocità:</strong> <strong><span style="font-size: 1em;">{{ data.velocita }}</span></strong></p>
+    <p><strong>Critico:</strong> <strong><span style="font-size: 1em;">{{ data.critico }}</span></strong></p>
+  </div>
+  <div class="mosse">
+    <div class="mosse-grid">
+      <button
+        *ngFor="let mossa of mosse"
+        (click)="onMoveClick(mossa)"
+        [class.selected]="mossa === mossaSelezionata">
+        {{ mossa }}
+      </button>
+    </div>
+  </div>
+</div>

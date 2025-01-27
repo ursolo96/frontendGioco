@@ -1,0 +1,12 @@
+<div class="battle-log">
+  <h2>Log della Battaglia</h2>
+  <div *ngIf="isGameOver">
+    <h2>Vittoria per {{ winnerName }}</h2>
+    <div class="button-container">
+      <img src="/select-character.png" alt="Seleziona Personaggi" (click)="goToCharacterSelection()" class="character-select-button">
+    </div>
+  </div>
+  <div class="log-entries">
+    <p *ngFor="let entry of logs">{{ entry }}</p>
+  </div>
+</div>
